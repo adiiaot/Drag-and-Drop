@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop Design---ADiisdevs</title>
+    <link rel="stylesheet" href="/Assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="left">
+            <div class="list" draggable="true">
+                <img src="/Assets/images/menu.png">Caps
+            </div>
+
+            <div class="list" draggable="true">
+                <img src="/Assets/images/duration.png">Time
+            </div>
+
+            <div class="list" draggable="true">
+                <img src="/Assets/images/location.png">Location
+            </div>
+
+            <div class="list" draggable="true">
+                <img src="/Assets/images/arrow.png">Direction
+            </div>
+
+            <div class="list" draggable="true">
+                <img src="/Assets/images/sun.png">Light
+            </div>
+        </div>
+        <div id="right"></div>
+    </div>
+<!----------------------JAVASCRIPT----------------------->
+    <script>
+
+        let lists = document.getElementsByClassName("list");
+        let rightBox = document.getElementById("right");
+        let leftBox = document.getElementById("left");
+
+
+        for (list of lists) {
+            list.addEventListener("dragstart", function(e){
+                let selected = e.target;
+
+                rightBox.addEventListener("dragover", function(e){
+                    e.preventDefault();
+                });
+                rightBox.addEventListener("drop", function(e){
+                    rightBox.appendChild(selected);
+                    selected = null;
+                });
+
+                leftBox.addEventListener("dragover", function(e){
+                    e.preventDefault();
+                });
+                leftBox.addEventListener("drop", function(e){
+                    leftBox.appendChild(selected);
+                    selected = null;
+                });
+            });
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>
